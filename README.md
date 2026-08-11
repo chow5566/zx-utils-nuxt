@@ -1,75 +1,42 @@
-# Nuxt Minimal Starter
+# ZX Utils - 在线工具集
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+简洁、高效的在线工具集，帮你快速完成日常开发中的各种小任务。
 
-## Setup
+在线地址：[chow5566.github.io/zx-utils-nuxt](https://chow5566.github.io/zx-utils-nuxt)
 
-Make sure to install dependencies:
+## 技术栈
+
+- [Nuxt 4](https://nuxt.com/) + [Nuxt UI v4](https://ui.nuxt.com/)
+- [Vue 3](https://vuejs.org/) + [Tailwind CSS v4](https://tailwindcss.com/)
+- pnpm 包管理
+
+## 本地开发
 
 ```bash
-# npm
-npm install
-
-# pnpm
+# 安装依赖
 pnpm install
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
+# 启动开发服务器 (http://localhost:3000)
 pnpm dev
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
+# 构建生产版本
 pnpm build
 
-# yarn
-yarn build
+# 生成静态站点
+pnpm generate
 
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
+# 本地预览静态站点
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 部署
+
+项目通过 GitHub Actions 自动部署到 GitHub Pages。
+
+推送代码到 `main` 分支后，Actions 会自动：
+
+1. 安装依赖
+2. 生成静态站点 (`pnpm generate`)
+3. 部署到 GitHub Pages
+
+如需手动触发部署，在 Actions 页面运行 `Deploy to GitHub Pages` workflow 即可。
