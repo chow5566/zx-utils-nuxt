@@ -44,6 +44,25 @@ useSeoMeta({
             </p>
           </UCard>
         </NuxtLink>
+
+        <NuxtLink to="/tools/base64" class="block group">
+          <UCard
+            variant="outline"
+            class="hover:border-(--ui-primary) transition-colors cursor-pointer active:scale-[0.98] h-full"
+            :ui="{ root: 'group-hover:shadow-sm transition-shadow' }"
+          >
+            <template #header>
+              <div class="text-2xl sm:text-3xl">🔐</div>
+            </template>
+
+            <h3 class="font-semibold text-(--ui-text-highlighted) group-hover:text-(--ui-primary) transition-colors mb-1 text-sm sm:text-base">
+              Base64 加密解密
+            </h3>
+            <p class="text-xs sm:text-sm text-(--ui-text-muted)">
+              在线 Base64 编码解码工具，支持 Unicode 字符，快速完成文本与 Base64 格式的互相转换。
+            </p>
+          </UCard>
+        </NuxtLink>
       </div>
     </section>
   </div>

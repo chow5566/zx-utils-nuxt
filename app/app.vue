@@ -28,6 +28,15 @@
               <span class="hidden sm:inline">身份证号生成</span>
               <span class="sm:hidden">身份证</span>
             </UButton>
+            <UButton
+              to="/tools/base64"
+              variant="ghost"
+              size="md"
+              color="neutral"
+            >
+              <span class="hidden sm:inline">Base64 加密解密</span>
+              <span class="sm:hidden">Base64</span>
+            </UButton>
           </nav>
         </div>
       </header>
