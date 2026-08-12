@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   app: {
     // 如果是项目页面 (username.github.io/repo-name)，使用 '/repo-name/'
     // 如果是用户页面 (username.github.io)，改为 '/'
-    baseURL: process.env.NUXT_APP_BASE_URL || '/zx-utils-nuxt/',
+    baseURL: process.env.NUXT_APP_BASE_URL || '/zx-utils/',
   },
 
   nitro: {

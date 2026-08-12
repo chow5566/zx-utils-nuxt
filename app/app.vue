@@ -65,6 +65,7 @@ const toolItems = [
                 工具
               </UButton>
             </UDropdownMenu>
+
           </nav>
         </div>
       </header>
@@ -78,7 +79,19 @@ const toolItems = [
       <footer class="border-t border-(--ui-border)/60 py-5 sm:py-6 mt-12 sm:mt-16">
         <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-(--ui-text-muted)">
           <p>ZX Utils - 免费在线工具集 &copy; {{ new Date().getFullYear() }}</p>
-          <p>所有数据处理均在浏览器本地完成</p>
+          <div class="flex items-center gap-4">
+            <p>所有数据处理均在浏览器本地完成</p>
+            <a
+              href="https://github.com/chow5566/zx-utils-nuxt"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 hover:text-(--ui-primary) transition-colors"
+              aria-label="GitHub"
+            >
+              <UIcon name="i-lucide-github" class="w-4 h-4" />
+              <span class="hidden sm:inline">GitHub</span>
+            </a>
+          </div>
         </div>
       </footer>
     </div>
