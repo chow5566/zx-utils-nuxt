@@ -102,6 +102,25 @@ useSeoMeta({
           </UCard>
         </NuxtLink>
 
+        <NuxtLink to="/tools/name-generator" class="block group">
+          <UCard
+            variant="outline"
+            class="hover:border-(--ui-primary) transition-colors cursor-pointer active:scale-[0.98] h-full"
+            :ui="{ root: 'group-hover:shadow-sm transition-shadow' }"
+          >
+            <template #header>
+              <div class="text-2xl sm:text-3xl">🧑</div>
+            </template>
+
+            <h3 class="font-semibold text-(--ui-text-highlighted) group-hover:text-(--ui-primary) transition-colors mb-1 text-sm sm:text-base">
+              人名生成器
+            </h3>
+            <p class="text-xs sm:text-sm text-(--ui-text-muted)">
+              在线随机人名生成，支持中文名、网名、英文名，可按性别筛选，适合小说角色取名。
+            </p>
+          </UCard>
+        </NuxtLink>
+
         <NuxtLink to="/tools/text-diff" class="block group">
           <UCard
             variant="outline"

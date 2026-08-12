@@ -143,7 +143,7 @@ async function handleCopy(text: string) {
         <div class="flex items-center justify-between gap-3">
           <h2 class="text-base sm:text-lg font-semibold text-(--ui-text-highlighted)">生成设置</h2>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-(--ui-text-muted)">生成数量</span>
+            <span class="hidden sm:inline text-xs text-(--ui-text-muted)">生成数量</span>
             <div class="inline-flex items-center rounded-md ring-1 ring-(--ui-border-accented)">
               <UButton
                 @click="count > 1 && count--"

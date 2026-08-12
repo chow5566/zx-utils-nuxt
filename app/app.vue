@@ -1,3 +1,17 @@
+<script setup lang="ts">
+/**
+ * 导航菜单项（新增工具页后只需在此数组追加即可）
+ */
+const toolItems = [
+  { label: '身份证号生成', to: '/tools/id-card' },
+  { label: 'Base64 加密解密', to: '/tools/base64' },
+  { label: 'JSON 格式化', to: '/tools/json-formatter' },
+  { label: '字数统计', to: '/tools/char-counter' },
+  { label: '文本差异对比', to: '/tools/text-diff' },
+  { label: '人名生成器', to: '/tools/name-generator' },
+]
+</script>
+
 <template>
   <UApp>
     <NuxtRouteAnnouncer />
@@ -11,6 +25,7 @@
           >
             ZX Utils
           </NuxtLink>
+
           <nav class="flex items-center gap-1 sm:gap-2">
             <UButton
               to="/"
@@ -19,51 +34,34 @@
               color="neutral"
               :label="'首页'"
             />
-            <UButton
-              to="/tools/id-card"
-              variant="ghost"
-              size="md"
-              color="neutral"
+
+            <!-- 桌面端：完整工具列表 -->
+            <template v-for="item in toolItems" :key="item.to">
+              <UButton
+                :to="item.to"
+                variant="ghost"
+                size="md"
+                color="neutral"
+                class="hidden sm:inline-flex"
+              >
+                {{ item.label }}
+              </UButton>
+            </template>
+
+            <!-- 移动端：工具下拉菜单 -->
+            <UDropdownMenu
+              :items="toolItems"
+              class="sm:hidden"
             >
-              <span class="hidden sm:inline">身份证号生成</span>
-              <span class="sm:hidden">身份证</span>
-            </UButton>
-            <UButton
-              to="/tools/base64"
-              variant="ghost"
-              size="md"
-              color="neutral"
-            >
-              <span class="hidden sm:inline">Base64</span>
-              <span class="sm:hidden">Base64</span>
-            </UButton>
-            <UButton
-              to="/tools/json-formatter"
-              variant="ghost"
-              size="md"
-              color="neutral"
-            >
-              <span class="hidden sm:inline">JSON 格式化</span>
-              <span class="sm:hidden">JSON</span>
-            </UButton>
-            <UButton
-              to="/tools/char-counter"
-              variant="ghost"
-              size="md"
-              color="neutral"
-            >
-              <span class="hidden sm:inline">字数统计</span>
-              <span class="sm:hidden">字数</span>
-            </UButton>
-            <UButton
-              to="/tools/text-diff"
-              variant="ghost"
-              size="md"
-              color="neutral"
-            >
-              <span class="hidden sm:inline">文本对比</span>
-              <span class="sm:hidden">Diff</span>
-            </UButton>
+              <UButton
+                variant="ghost"
+                size="md"
+                color="neutral"
+                trailing-icon="i-lucide-chevron-down"
+              >
+                工具
+              </UButton>
+            </UDropdownMenu>
           </nav>
         </div>
       </header>
