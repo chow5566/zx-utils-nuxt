@@ -34,8 +34,35 @@
               size="md"
               color="neutral"
             >
-              <span class="hidden sm:inline">Base64 加密解密</span>
+              <span class="hidden sm:inline">Base64</span>
               <span class="sm:hidden">Base64</span>
+            </UButton>
+            <UButton
+              to="/tools/json-formatter"
+              variant="ghost"
+              size="md"
+              color="neutral"
+            >
+              <span class="hidden sm:inline">JSON 格式化</span>
+              <span class="sm:hidden">JSON</span>
+            </UButton>
+            <UButton
+              to="/tools/char-counter"
+              variant="ghost"
+              size="md"
+              color="neutral"
+            >
+              <span class="hidden sm:inline">字数统计</span>
+              <span class="sm:hidden">字数</span>
+            </UButton>
+            <UButton
+              to="/tools/text-diff"
+              variant="ghost"
+              size="md"
+              color="neutral"
+            >
+              <span class="hidden sm:inline">文本对比</span>
+              <span class="sm:hidden">Diff</span>
             </UButton>
           </nav>
         </div>

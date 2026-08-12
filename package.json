@@ -13,16 +13,21 @@
     "@nuxt/ui": "^4.10.0",
     "@vueuse/core": "^14.4.0",
     "chinese_regions": "^0.5.5",
+    "diff": "^9.0.0",
     "nuxt": "^4.5.2",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "vue-demi"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "vue-demi"
+    ]
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.123",
-    "@nuxtjs/sitemap": "^8.3.4"
+    "@nuxtjs/sitemap": "^8.3.4",
+    "@types/diff": "^8.0.0"
   }
 }

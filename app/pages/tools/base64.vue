@@ -91,8 +91,60 @@ async function handleCopy(text: string) {
         </div>
       </template>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <!-- 输入区 -->
+      <!-- 桌面端：左右分栏，固定最大高度防止长文本无限撑高 -->
+      <div class="hidden sm:grid sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-(--ui-border)">
+        <div class="pr-3">
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-medium text-(--ui-text-muted)">
+              {{ mode === 'encode' ? '原始文本' : 'Base64 字符串' }}
+            </label>
+            <UButton
+              v-show="input"
+              @click="handleClear"
+              variant="ghost"
+              size="xs"
+              color="neutral"
+              icon="i-lucide-x"
+              class="cursor-pointer"
+            />
+          </div>
+          <UTextarea
+            v-model="input"
+            :placeholder="mode === 'encode' ? '输入要编码的文本...' : '输入要解码的 Base64 字符串...'"
+            class="w-full font-mono text-xs"
+            :rows="20"
+            :ui="{ base: 'max-h-[70vh] resize-none' }"
+          />
+        </div>
+
+        <div class="pl-3">
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-medium text-(--ui-text-muted)">
+              {{ mode === 'encode' ? 'Base64 结果' : '解码结果' }}
+            </label>
+            <UButton
+              v-show="output"
+              @click="handleCopy(output)"
+              variant="ghost"
+              size="xs"
+              color="primary"
+              icon="i-lucide-copy"
+              class="cursor-pointer"
+            />
+          </div>
+          <UTextarea
+            :value="output"
+            readonly
+            :placeholder="mode === 'encode' ? '编码结果将显示在这里' : '解码结果将显示在这里'"
+            class="w-full font-mono text-xs"
+            :rows="20"
+            :ui="{ base: 'max-h-[70vh] resize-none' }"
+          />
+        </div>
+      </div>
+
+      <!-- 移动端：上下布局 -->
+      <div class="sm:hidden space-y-3">
         <div>
           <div class="flex items-center justify-between mb-1.5">
             <label class="text-sm font-medium text-(--ui-text-highlighted)">
@@ -111,14 +163,12 @@ async function handleCopy(text: string) {
           <UTextarea
             v-model="input"
             :placeholder="mode === 'encode' ? '输入要编码的文本...' : '输入要解码的 Base64 字符串...'"
-            class="w-full"
+            class="w-full font-mono text-sm"
             :rows="8"
-            :ui="{ base: 'font-mono text-sm' }"
             autoresize
           />
         </div>
 
-        <!-- 输出区 -->
         <div>
           <div class="flex items-center justify-between mb-1.5">
             <label class="text-sm font-medium text-(--ui-text-highlighted)">
@@ -138,9 +188,8 @@ async function handleCopy(text: string) {
             :value="output"
             readonly
             :placeholder="mode === 'encode' ? '编码结果将显示在这里' : '解码结果将显示在这里'"
-            class="w-full"
+            class="w-full font-mono text-sm"
             :rows="8"
-            :ui="{ base: 'font-mono text-sm' }"
             autoresize
           />
         </div>

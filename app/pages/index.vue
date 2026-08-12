@@ -63,6 +63,63 @@ useSeoMeta({
             </p>
           </UCard>
         </NuxtLink>
+
+        <NuxtLink to="/tools/json-formatter" class="block group">
+          <UCard
+            variant="outline"
+            class="hover:border-(--ui-primary) transition-colors cursor-pointer active:scale-[0.98] h-full"
+            :ui="{ root: 'group-hover:shadow-sm transition-shadow' }"
+          >
+            <template #header>
+              <div class="text-2xl sm:text-3xl">📋</div>
+            </template>
+
+            <h3 class="font-semibold text-(--ui-text-highlighted) group-hover:text-(--ui-primary) transition-colors mb-1 text-sm sm:text-base">
+              JSON 格式化
+            </h3>
+            <p class="text-xs sm:text-sm text-(--ui-text-muted)">
+              在线 JSON 校验、美化与压缩工具，支持 2/4 空格缩进，开发者常用工具。
+            </p>
+          </UCard>
+        </NuxtLink>
+
+        <NuxtLink to="/tools/char-counter" class="block group">
+          <UCard
+            variant="outline"
+            class="hover:border-(--ui-primary) transition-colors cursor-pointer active:scale-[0.98] h-full"
+            :ui="{ root: 'group-hover:shadow-sm transition-shadow' }"
+          >
+            <template #header>
+              <div class="text-2xl sm:text-3xl">📝</div>
+            </template>
+
+            <h3 class="font-semibold text-(--ui-text-highlighted) group-hover:text-(--ui-primary) transition-colors mb-1 text-sm sm:text-base">
+              字数统计
+            </h3>
+            <p class="text-xs sm:text-sm text-(--ui-text-muted)">
+              实时统计中文字数、英文单词数、字符数、行数、段落数及 UTF-8 字节数。
+            </p>
+          </UCard>
+        </NuxtLink>
+
+        <NuxtLink to="/tools/text-diff" class="block group">
+          <UCard
+            variant="outline"
+            class="hover:border-(--ui-primary) transition-colors cursor-pointer active:scale-[0.98] h-full"
+            :ui="{ root: 'group-hover:shadow-sm transition-shadow' }"
+          >
+            <template #header>
+              <div class="text-2xl sm:text-3xl">🔍</div>
+            </template>
+
+            <h3 class="font-semibold text-(--ui-text-highlighted) group-hover:text-(--ui-primary) transition-colors mb-1 text-sm sm:text-base">
+              文本差异对比
+            </h3>
+            <p class="text-xs sm:text-sm text-(--ui-text-muted)">
+              逐行比较两段文本差异，红色/绿色高亮删除与新增行，代码审查利器。
+            </p>
+          </UCard>
+        </NuxtLink>
       </div>
     </section>
   </div>
