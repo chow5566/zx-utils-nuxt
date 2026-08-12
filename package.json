@@ -18,6 +18,9 @@
     "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "vue-demi"]
+  },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.123",
     "@nuxtjs/sitemap": "^8.3.4"
