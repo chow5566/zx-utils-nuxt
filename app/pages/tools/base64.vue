@@ -17,7 +17,6 @@ const toast = useToast()
 
 const { copy: copyToClipboard } = useClipboard({ legacy: true })
 
-// 根据当前模式实时更新输出
 watchEffect(() => {
   if (!input.value) {
     output.value = ''
@@ -27,7 +26,6 @@ watchEffect(() => {
 })
 
 function handleSwap() {
-  // 将输出作为新输入，切换模式
   if (output.value && !output.value.startsWith('编码失败') && !output.value.startsWith('解码失败')) {
     input.value = output.value
     mode.value = mode.value === 'encode' ? 'decode' : 'encode'
@@ -46,55 +44,58 @@ async function handleCopy(text: string) {
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto px-4 py-4 sm:py-8">
-    <!-- 面包屑 -->
+  <div class="max-w-5xl mx-auto px-4 py-6 sm:py-10">
+    <!-- Breadcrumb -->
     <nav class="text-xs sm:text-sm text-(--ui-text-muted) mb-4 sm:mb-6" aria-label="面包屑导航">
-      <NuxtLink to="/" class="hover:text-(--ui-primary)">首页</NuxtLink>
+      <NuxtLink to="/" class="hover:text-(--ui-primary) transition-colors">首页</NuxtLink>
       <span class="mx-2">/</span>
       <span class="text-(--ui-text-highlighted)">Base64 加密解密</span>
     </nav>
 
-    <h1 class="text-xl sm:text-3xl font-bold text-(--ui-text-highlighted) mb-1 sm:mb-2">
-      Base64 在线加密解密工具
-    </h1>
-    <p class="text-sm sm:text-base text-(--ui-text-muted) mb-6 sm:mb-8">
-      在线 Base64 编码解码工具，支持 Unicode 字符，快速将文本与 Base64 格式互相转换。
-    </p>
+    <!-- Page Header -->
+    <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+      <div class="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-md bg-amber-50 dark:bg-amber-950/40 shrink-0">
+        <UIcon name="i-lucide-lock" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 dark:text-amber-400" />
+      </div>
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold text-(--ui-text-highlighted)">Base64 在线加密解密工具</h1>
+        <p class="text-xs sm:text-sm text-(--ui-text-muted) mt-1">在线 Base64 编码解码，支持 Unicode 字符，快速完成文本与 Base64 格式的互相转换。</p>
+      </div>
+    </div>
 
-    <!-- 编解码面板 -->
-    <UCard class="mb-4 sm:mb-6">
-      <template #header>
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-base sm:text-lg font-semibold text-(--ui-text-highlighted)">
-            {{ mode === 'encode' ? 'Base64 编码' : 'Base64 解码' }}
-          </h2>
-          <div class="flex items-center gap-2">
-            <UButton
-              :color="mode === 'encode' ? 'primary' : 'neutral'"
-              variant="outline"
-              size="xs"
-              @click="mode = 'encode'"
-              class="cursor-pointer"
-            >
-              编码
-            </UButton>
-            <UButton
-              :color="mode === 'decode' ? 'primary' : 'neutral'"
-              variant="outline"
-              size="xs"
-              @click="mode = 'decode'"
-              class="cursor-pointer"
-            >
-              解码
-            </UButton>
-          </div>
+    <!-- Main Panel -->
+    <div class="rounded-md border border-(--ui-border) bg-(--ui-bg) overflow-hidden mb-5">
+      <!-- Header -->
+      <div class="flex items-center justify-between gap-3 px-5 py-3 border-b border-(--ui-border) bg-(--ui-bg-elevated)/50">
+        <h2 class="text-sm sm:text-base font-semibold text-(--ui-text-highlighted)">
+          {{ mode === 'encode' ? 'Base64 编码' : 'Base64 解码' }}
+        </h2>
+        <div class="flex items-center gap-1.5">
+          <UButton
+            :color="mode === 'encode' ? 'primary' : 'neutral'"
+            variant="outline"
+            size="xs"
+            @click="mode = 'encode'"
+            class="cursor-pointer"
+          >
+            编码
+          </UButton>
+          <UButton
+            :color="mode === 'decode' ? 'primary' : 'neutral'"
+            variant="outline"
+            size="xs"
+            @click="mode = 'decode'"
+            class="cursor-pointer"
+          >
+            解码
+          </UButton>
         </div>
-      </template>
+      </div>
 
-      <!-- 桌面端：左右分栏，固定最大高度防止长文本无限撑高 -->
-      <div class="hidden sm:grid sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-(--ui-border)">
-        <div class="pr-3">
-          <div class="flex items-center justify-between mb-1.5">
+      <!-- Desktop: side-by-side -->
+      <div class="hidden sm:grid sm:grid-cols-2 sm:divide-x sm:divide-(--ui-border)">
+        <div class="p-4 sm:p-5">
+          <div class="flex items-center justify-between mb-2">
             <label class="text-xs font-medium text-(--ui-text-muted)">
               {{ mode === 'encode' ? '原始文本' : 'Base64 字符串' }}
             </label>
@@ -117,8 +118,8 @@ async function handleCopy(text: string) {
           />
         </div>
 
-        <div class="pl-3">
-          <div class="flex items-center justify-between mb-1.5">
+        <div class="p-4 sm:p-5">
+          <div class="flex items-center justify-between mb-2">
             <label class="text-xs font-medium text-(--ui-text-muted)">
               {{ mode === 'encode' ? 'Base64 结果' : '解码结果' }}
             </label>
@@ -143,10 +144,10 @@ async function handleCopy(text: string) {
         </div>
       </div>
 
-      <!-- 移动端：上下布局 -->
-      <div class="sm:hidden space-y-3">
+      <!-- Mobile: stacked -->
+      <div class="sm:hidden p-4 space-y-4">
         <div>
-          <div class="flex items-center justify-between mb-1.5">
+          <div class="flex items-center justify-between mb-2">
             <label class="text-sm font-medium text-(--ui-text-highlighted)">
               {{ mode === 'encode' ? '原始文本' : 'Base64 字符串' }}
             </label>
@@ -170,7 +171,7 @@ async function handleCopy(text: string) {
         </div>
 
         <div>
-          <div class="flex items-center justify-between mb-1.5">
+          <div class="flex items-center justify-between mb-2">
             <label class="text-sm font-medium text-(--ui-text-highlighted)">
               {{ mode === 'encode' ? 'Base64 结果' : '解码结果' }}
             </label>
@@ -195,8 +196,8 @@ async function handleCopy(text: string) {
         </div>
       </div>
 
-      <!-- 快捷操作 -->
-      <div class="flex items-center gap-2 mt-4 pt-4 border-t border-(--ui-border)">
+      <!-- Actions -->
+      <div class="flex items-center gap-2 px-5 py-3 border-t border-(--ui-border) bg-(--ui-bg-elevated)/30">
         <UButton
           @click="handleSwap"
           variant="outline"
@@ -209,18 +210,18 @@ async function handleCopy(text: string) {
           交换
         </UButton>
       </div>
-    </UCard>
+    </div>
 
-    <!-- 说明 -->
-    <section class="mt-6 sm:mt-8 text-sm text-(--ui-text-muted)">
+    <!-- Info Section -->
+    <section class="text-sm text-(--ui-text-muted)">
       <h2 class="text-base sm:text-lg font-semibold text-(--ui-text-highlighted) mb-3">关于 Base64</h2>
-      <p class="mb-3">
+      <p class="mb-3 leading-relaxed">
         Base64 是一种基于 64 个可打印字符来表示二进制数据的编码方式，常用于在文本协议（如 HTTP、JSON）中传输二进制数据。
       </p>
-      <ul class="space-y-1.5 list-disc list-inside">
+      <ul class="space-y-2 list-disc list-inside">
         <li><strong class="text-(--ui-text-highlighted)">编码</strong> — 将文本或二进制数据转换为 Base64 字符串，便于在网络传输中保持数据完整性</li>
         <li><strong class="text-(--ui-text-highlighted)">解码</strong> — 将 Base64 字符串还原为原始文本或二进制数据</li>
-        <li><strong class="text-(--ui-text-highlighted)">Unicode 支持</strong> — 本工具使用 TextEncoder/TextDecoder 处理中文字符，确保编码解码不失真</li>
+        <li><strong class="text-(--ui-text-highlighted)">Unicode 支持</strong> — 使用 TextEncoder/TextDecoder 处理中文字符，确保编码解码不失真</li>
         <li><strong class="text-(--ui-text-highlighted)">字符集</strong> — Base64 使用 A-Z、a-z、0-9、+、/ 共 64 个字符，末尾用 = 填充</li>
       </ul>
     </section>

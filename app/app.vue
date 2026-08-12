@@ -17,16 +17,19 @@ const toolItems = [
     <NuxtRouteAnnouncer />
     <div class="min-h-screen flex flex-col">
       <!-- Header -->
-      <header class="sticky top-0 z-10 border-b border-(--ui-border) bg-(--ui-bg)">
+      <header class="sticky top-0 z-10 border-b border-(--ui-border)/60 bg-(--ui-bg)/80 backdrop-blur-md">
         <div class="max-w-5xl mx-auto px-4 h-12 sm:h-14 flex items-center justify-between">
           <NuxtLink
             to="/"
-            class="text-base sm:text-lg font-bold text-(--ui-text-highlighted) hover:text-(--ui-primary) transition-colors shrink-0"
+            class="flex items-center gap-2 text-base sm:text-lg font-bold text-(--ui-text-highlighted) hover:text-(--ui-primary) transition-colors shrink-0"
           >
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-(--ui-primary)/10">
+              <UIcon name="i-lucide-zap" class="w-4 h-4 text-(--ui-primary)" />
+            </span>
             ZX Utils
           </NuxtLink>
 
-          <nav class="flex items-center gap-1 sm:gap-2">
+          <nav class="flex items-center gap-0.5 sm:gap-1">
             <UButton
               to="/"
               variant="ghost"
@@ -72,9 +75,10 @@ const toolItems = [
       </main>
 
       <!-- Footer -->
-      <footer class="border-t border-(--ui-border) py-4 sm:py-6 mt-8 sm:mt-12">
-        <div class="max-w-5xl mx-auto px-4 text-center text-xs sm:text-sm text-(--ui-text-muted)">
+      <footer class="border-t border-(--ui-border)/60 py-5 sm:py-6 mt-12 sm:mt-16">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-(--ui-text-muted)">
           <p>ZX Utils - 免费在线工具集 &copy; {{ new Date().getFullYear() }}</p>
+          <p>所有数据处理均在浏览器本地完成</p>
         </div>
       </footer>
     </div>
