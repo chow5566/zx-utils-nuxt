@@ -84,8 +84,8 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/chow5566/zx-utils-nuxt.git
-cd zx-utils-nuxt
+git clone https://github.com/chow5566/zx-utils.git
+cd zx-utils
 
 # 安装依赖
 pnpm install
@@ -115,7 +115,7 @@ pnpm preview
 ## 项目结构
 
 ```
-zx-utils-nuxt/
+zx-utils/
 ├── app/
 │   ├── assets/
 │   │   └── css/

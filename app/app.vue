@@ -82,7 +82,7 @@ const toolItems = [
           <div class="flex items-center gap-4">
             <p>所有数据处理均在浏览器本地完成</p>
             <a
-              href="https://github.com/chow5566/zx-utils-nuxt"
+              href="https://github.com/chow5566/zx-utils"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 hover:text-(--ui-primary) transition-colors"
